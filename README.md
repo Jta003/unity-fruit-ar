@@ -1,55 +1,73 @@
 # Fruit Nutrition AR (Unity)
 
-Standalone Unity Android application. This folder does not load or call the Flutter project at runtime. The Flutter source was read only to copy nutrition values, labels, and the TFLite model into this project.
+แอปพลิเคชัน Android ที่พัฒนาด้วย Unity และทำงานได้ด้วยตัวเอง โปรเจกต์นี้ไม่โหลดหรือเรียกใช้โปรเจกต์ Flutter ขณะทำงาน โดยอ่านซอร์สโค้ด Flutter เพียงเพื่อคัดลอกข้อมูลโภชนาการ ป้ายกำกับ และโมเดล TFLite มาใช้ในโปรเจกต์นี้
 
-## Editor and packages
+## Unity Editor และแพ็กเกจ
 
-- Unity Editor: `6000.3.18f1` (installed on the development machine)
+- Unity Editor: `6000.3.18f1` (ติดตั้งอยู่ในเครื่องที่ใช้พัฒนา)
 - AR Foundation: `6.3.1`
 - Google ARCore XR Plugin: `6.3.1`
 - XR Plug-in Management: `4.5.3`
-- TFLite for Unity: `com.github.asus4.tflite` `2.21.0-rc1`
+- TFLite for Unity: `com.github.asus4.tflite` เวอร์ชัน `2.21.0-rc1`
 - uGUI: `2.0.0`
 
-AR Foundation and ARCore use matching 6.3 package versions. TFLite 2.21 supports Unity 6000.3 and Android ARM64. References: [Unity ARCore package compatibility](https://docs.unity3d.com/6000.0/Documentation/Manual/com.unity.xr.arcore.html) and [TFLite Unity samples/package](https://github.com/asus4/tf-lite-unity-sample).
+AR Foundation และ ARCore ใช้แพ็กเกจเวอร์ชัน 6.3 ที่ตรงกัน ส่วน TFLite 2.21 รองรับ Unity 6000.3 และ Android ARM64
 
-## Open and run
+เอกสารอ้างอิง: [ความเข้ากันได้ของแพ็กเกจ Unity ARCore](https://docs.unity3d.com/6000.0/Documentation/Manual/com.unity.xr.arcore.html) และ [ตัวอย่างและแพ็กเกจ TFLite สำหรับ Unity](https://github.com/asus4/tf-lite-unity-sample)
 
-1. Open this directory (`unity_fruit_starter`) from Unity Hub with Unity `6000.3.18f1` and let Package Manager resolve dependencies.
-2. Confirm `Assets/Scenes/FruitNutrition.unity` is the first enabled Build Settings scene.
-3. For AR on Android, open **Project Settings → XR Plug-in Management → Android** and enable **ARCore**. Use an ARCore-supported device.
-4. Select Android in Build Profiles. Use ARM64 and IL2CPP (the bootstrap sets these), grant camera permission, and build an APK.
-5. Press Play in the Editor to inspect library, nutrition, favorites, history, and compare flows. Camera and AR require device support.
+## การเปิดและรันโปรเจกต์
 
-The first package resolve requires network access. If the package manager cannot reach the npm registry, retry resolution while online.
+1. เปิดโฟลเดอร์นี้ (`unity_fruit_starter`) ผ่าน Unity Hub ด้วย Unity `6000.3.18f1` แล้วรอให้ Package Manager ดาวน์โหลดและจัดการแพ็กเกจที่จำเป็น
+2. ตรวจสอบว่า `Assets/Scenes/FruitNutrition.unity` เป็น Scene แรกที่เปิดใช้งานใน Build Settings
+3. หากต้องการใช้ AR บน Android ให้เปิด **Project Settings → XR Plug-in Management → Android** แล้วเปิดใช้งาน **ARCore** โดยใช้อุปกรณ์ที่รองรับ ARCore
+4. เลือก Android ใน Build Profiles ตั้งค่าเป็น ARM64 และ IL2CPP (โค้ดเริ่มต้นของโปรเจกต์ตั้งค่าเหล่านี้ไว้) อนุญาตให้แอปเข้าถึงกล้อง แล้วสร้างไฟล์ APK
+5. กด Play ใน Editor เพื่อทดสอบคลังผลไม้ ข้อมูลโภชนาการ รายการโปรด ประวัติ และการเปรียบเทียบ ส่วนกล้องและ AR ต้องใช้อุปกรณ์ที่รองรับ
 
-## Project layout
+การดาวน์โหลดและจัดการแพ็กเกจครั้งแรกต้องเชื่อมต่ออินเทอร์เน็ต หาก Package Manager เข้าถึง npm registry ไม่ได้ ให้ลองใหม่เมื่อเชื่อมต่ออินเทอร์เน็ตแล้ว
 
-- `Assets/Scenes/FruitNutrition.unity`: single-scene mobile app; screens are runtime Canvas views.
-- `Assets/Scripts/Core`: fruit data, database lookup, local favorites/history.
-- `Assets/Scripts/ML`: camera capture, TFLite model validation, preprocessing and inference.
-- `Assets/Scripts/AR`: AR plane raycasts, anchors, placement, gestures and fruit prefab registry.
-- `Assets/Scripts/UI`: mobile UI and navigation.
-- `Assets/Resources/fruits.json`: nine nutrition records sourced from the reference database.
-- `Assets/Resources/labels.txt`: nine model labels in output order.
-- `Assets/Resources/fruit_model.bytes` and `Assets/Models/fruit_model.tflite`: copied model.
+## โครงสร้างโปรเจกต์
 
-## Model contract
+- `Assets/Scenes/FruitNutrition.unity`: แอปมือถือที่ใช้ Scene เดียว โดยสร้างหน้าจอด้วย Canvas ขณะทำงาน
+- `Assets/Scripts/Core`: ข้อมูลผลไม้ การค้นหาข้อมูล และการจัดเก็บรายการโปรดกับประวัติในเครื่อง
+- `Assets/Scripts/ML`: การรับภาพจากกล้อง การตรวจสอบโมเดล TFLite การเตรียมภาพ และการประมวลผลเพื่อทำนาย
+- `Assets/Scripts/AR`: การตรวจหาจุดบนระนาบ AR ด้วย raycast, anchor, การวางโมเดล การควบคุมด้วยท่าทางสัมผัส และทะเบียน prefab ผลไม้
+- `Assets/Scripts/UI`: ส่วนติดต่อผู้ใช้บนมือถือและการเปลี่ยนหน้าจอ
+- `Assets/Resources/fruits.json`: ข้อมูลโภชนาการผลไม้ 9 รายการจากฐานข้อมูลอ้างอิง
+- `Assets/Resources/labels.txt`: ป้ายกำกับ 9 รายการ เรียงตามลำดับผลลัพธ์ของโมเดล
+- `Assets/Resources/fruit_model.bytes` และ `Assets/Models/fruit_model.tflite`: ไฟล์โมเดลที่คัดลอกมา
 
-Reference code reports image preprocessing as centered square crop, resize to 224×224, RGB float normalization `(channel - 127.5) / 127.5`, and argmax over nine scores. Unity validates tensor shape and type at startup and refuses inference if they differ. It uses `FruitClassifier.ConfidenceThreshold` (`0.55`, matching the reference app). The actual TFLite input/output tensor metadata has not yet been extracted in this environment; Unity logs the model-reported shape/type on initialization and blocks if the assumed input contract is incorrect. Predictions are real model output; no filename matching or random score is used.
+## ข้อกำหนดอินพุตและเอาต์พุตของโมเดล
 
-## AR and 3D assets
+โค้ดอ้างอิงระบุขั้นตอนเตรียมภาพดังนี้: ครอบภาพตรงกลางเป็นสี่เหลี่ยมจัตุรัส ปรับขนาดเป็น 224×224 แปลงค่า RGB เป็นชนิด float และปรับค่าด้วยสูตร `(channel - 127.5) / 127.5` จากนั้นเลือกผลลัพธ์ที่มีคะแนนสูงสุดจากทั้งหมด 9 คะแนนด้วย argmax
 
-The app creates AR Foundation session, camera background, plane detection, raycast and anchor managers at runtime. Enable the ARCore loader in Project Settings before building. `FruitModelRegistry` maps fruit IDs to prefab assets. No licensed 3D fruit meshes or images were present in the reference assets, so no fake model is substituted: assign a model prefab for each fruit before AR placement can show fruit geometry. Gesture controls include tap to place, drag to move, pinch to scale, two-finger movement to rotate, plus Delete and Reset.
+Unity ตรวจสอบรูปร่างและชนิดข้อมูลของ tensor เมื่อเริ่มทำงาน และจะไม่ประมวลผลการทำนายหากข้อมูลเหล่านี้ไม่ตรงตามข้อกำหนด โดยใช้ค่า `FruitClassifier.ConfidenceThreshold` เท่ากับ `0.55` ซึ่งตรงกับแอปอ้างอิง
 
-## Persistence
+ยังไม่ได้อ่าน metadata ของ tensor อินพุตและเอาต์พุตจากโมเดล TFLite จริงในสภาพแวดล้อมนี้ เมื่อเริ่มต้น Unity จะบันทึกรูปร่างและชนิดข้อมูลที่โมเดลรายงานไว้ใน log และปิดกั้นการทำนายหากข้อกำหนดอินพุตที่ตั้งสมมติฐานไว้ไม่ถูกต้อง
 
-Favorites and up to 100 scan history records are stored locally as JSON strings in PlayerPrefs. They are device-local; no SQLite dependency or network service is used.
+ผลการทำนายมาจากโมเดลจริง ไม่มีการจับคู่จากชื่อไฟล์หรือสุ่มคะแนน
 
-## Current limitations
+## AR และแอสเซ็ต 3 มิติ
 
-- Unity package restore, compilation, device tests and APK build still need to be run on this machine/device.
-- ARCore loader activation is a Unity Project Settings step; it is not enabled until selected for the Android target.
-- Fruit prefab assets are absent. AR placement reports the missing mapping until prefab assets are assigned.
-- Exact TFLite tensor metadata and on-device model predictions have not yet been verified.
-- The first UI pass uses Unity uGUI built-in font; Thai glyph coverage may depend on the device font. Replace with an appropriately licensed Thai-capable TMP font for release.
+แอปสร้าง AR Foundation session, พื้นหลังภาพกล้อง, ระบบตรวจจับระนาบ, raycast manager และ anchor manager ขณะทำงาน ต้องเปิดใช้งาน ARCore loader ใน Project Settings ก่อน Build
+
+`FruitModelRegistry` เชื่อมรหัสผลไม้กับแอสเซ็ต prefab เนื่องจากแอสเซ็ตอ้างอิงไม่มีโมเดลผลไม้ 3 มิติหรือภาพที่มีสิทธิ์ใช้งาน จึงไม่ได้ใช้โมเดลจำลองทดแทน ต้องกำหนด prefab ของโมเดลให้ผลไม้แต่ละชนิดก่อนจึงจะแสดงรูปทรงผลไม้ใน AR ได้
+
+การควบคุมด้วยท่าทางสัมผัสประกอบด้วย:
+
+- แตะเพื่อวางโมเดล
+- ลากเพื่อย้ายตำแหน่ง
+- ใช้สองนิ้วบีบหรือขยายเพื่อปรับขนาด
+- เลื่อนสองนิ้วเพื่อหมุน
+- ใช้ปุ่ม Delete เพื่อลบ และ Reset เพื่อรีเซ็ต
+
+## การจัดเก็บข้อมูล
+
+รายการโปรดและประวัติการสแกนสูงสุด 100 รายการถูกเก็บในเครื่องเป็นข้อความ JSON ผ่าน PlayerPrefs ข้อมูลแยกตามอุปกรณ์ โดยไม่ใช้ SQLite หรือบริการผ่านเครือข่าย
+
+## ข้อจำกัดปัจจุบัน
+
+- ยังต้องดาวน์โหลดแพ็กเกจ Unity ให้ครบ คอมไพล์ ทดสอบบนอุปกรณ์ และสร้าง APK บนเครื่องหรืออุปกรณ์นี้
+- ต้องเปิดใช้งาน ARCore loader ผ่าน Unity Project Settings โดยจะยังไม่เปิดใช้งานจนกว่าจะเลือกสำหรับแพลตฟอร์ม Android
+- ยังไม่มีแอสเซ็ต prefab ผลไม้ ระบบวางโมเดล AR จะแจ้งว่าไม่มีการเชื่อมโยงโมเดลจนกว่าจะกำหนด prefab
+- ยังไม่ได้ตรวจสอบ metadata ของ tensor TFLite อย่างละเอียดหรือผลการทำนายของโมเดลบนอุปกรณ์จริง
+- UI รุ่นแรกใช้ฟอนต์ที่มากับ Unity uGUI การแสดงอักขระไทยอาจขึ้นอยู่กับฟอนต์ของอุปกรณ์ ก่อนเผยแพร่ควรเปลี่ยนเป็นฟอนต์ TMP ที่รองรับภาษาไทยและมีสิทธิ์ใช้งานอย่างเหมาะสม

@@ -1,0 +1,9 @@
+0 orange fruit
+1 strawberry fruit
+2 kiwi fruit
+3 mango fruit
+4 chickoo fruit
+5 grapes fruit
+6 banana fruit
+7 cherry fruit
+8 apple fruit

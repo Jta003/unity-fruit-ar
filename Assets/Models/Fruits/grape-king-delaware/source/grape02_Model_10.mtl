@@ -1,0 +1,8 @@
+newmtl grape02_Model_10_u0_v0
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.04 0.04 0.04
+Ns 24.0
+d 1.0
+illum 2
+map_Kd ../textures/grape02_Model_10_u0_v0.jpg

@@ -1,0 +1,13 @@
+{
+  "fruits": [
+    {"id":"apple","name":"แอปเปิล (แดง)","englishName":"Apple","scientificName":"Malus domestica","modelKey":"apple","calories":52,"sugar":10.3,"carbohydrate":13.8,"fiber":2.4,"protein":0.3,"fat":0.2,"vitaminC":4.6,"servingSize":"1 ผลกลาง (ประมาณ 150 ก.)","healthScore":92},
+    {"id":"banana","name":"กล้วยหอม","englishName":"Banana","scientificName":"Musa acuminata","modelKey":"banana","calories":132,"sugar":24,"carbohydrate":31,"fiber":2.1,"protein":1.2,"fat":0.3,"vitaminC":8.7,"servingSize":"1 ผล (ประมาณ 120 ก.)","healthScore":85},
+    {"id":"orange","name":"ส้มเขียวหวาน","englishName":"Orange","scientificName":"Citrus sinensis","modelKey":"orange","calories":42,"sugar":9,"carbohydrate":10,"fiber":1.4,"protein":0.7,"fat":0.1,"vitaminC":42,"servingSize":"2 ผลกลาง","healthScore":88},
+    {"id":"mango","name":"มะม่วงน้ำดอกไม้ (สุก)","englishName":"Mango","scientificName":"Mangifera indica","modelKey":"mango","calories":84,"sugar":18,"carbohydrate":21,"fiber":1.8,"protein":0.6,"fat":0.3,"vitaminC":36.4,"servingSize":"1/2 ผลใหญ่","healthScore":78},
+    {"id":"grapes","name":"องุ่นแดง","englishName":"Grapes","scientificName":"Vitis vinifera","modelKey":"grapes","calories":69,"sugar":15.5,"carbohydrate":18.1,"fiber":0.9,"protein":0.7,"fat":0.2,"vitaminC":3.2,"servingSize":"1 พวงเล็ก (100 ก.)","healthScore":82},
+    {"id":"strawberry","name":"สตรอว์เบอร์รี","englishName":"Strawberry","scientificName":"Fragaria × ananassa","modelKey":"strawberry","calories":33,"sugar":4.9,"carbohydrate":7.7,"fiber":2,"protein":0.7,"fat":0.3,"vitaminC":58.8,"servingSize":"6–8 ผลกลาง","healthScore":95},
+    {"id":"kiwi","name":"กีวี","englishName":"Kiwi","scientificName":"Actinidia deliciosa","modelKey":"kiwi","calories":61,"sugar":9,"carbohydrate":14.7,"fiber":3,"protein":1.1,"fat":0.5,"vitaminC":92.7,"servingSize":"1 ผลกลาง (ประมาณ 75 ก.)","healthScore":94},
+    {"id":"chickoo","name":"ละมุด (Chickoo)","englishName":"Chickoo","scientificName":"Manilkara zapota","modelKey":"chickoo","calories":83,"sugar":14.8,"carbohydrate":20,"fiber":5.3,"protein":0.4,"fat":1.1,"vitaminC":14.7,"servingSize":"1 ผลกลาง (ประมาณ 100 ก.)","healthScore":86},
+    {"id":"cherry","name":"เชอร์รี","englishName":"Cherry","scientificName":"Prunus avium","modelKey":"cherry","calories":63,"sugar":12.8,"carbohydrate":16,"fiber":2.1,"protein":1.1,"fat":0.2,"vitaminC":7,"servingSize":"1 ถ้วย (ประมาณ 140 ก.)","healthScore":90}
+  ]
+}
